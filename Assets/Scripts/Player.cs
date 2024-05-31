@@ -7,8 +7,15 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// ナビメッシュコンポーネント
+    /// </summary>
     public NavMeshAgent navMeshAgent;
 
+    /// <summary>
+    /// 移動の速さ
+    /// </summary>
+    public float _velocity = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,25 +26,38 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
+        // プレイヤーのワールド座標を取得
+        Vector3 pos = transform.position;
+
+        // vector3(0,0,0);
+        Vector3 move = Vector3.zero;
+
         if (Input.GetKey(KeyCode.W))
         {
-            navMeshAgent.nextPosition += Vector3.forward * Time.deltaTime;
-            transform.LookAt(Vector3.forward);
+            move += Vector3.forward;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            navMeshAgent.nextPosition -= Vector3.right * Time.deltaTime;
-            transform.LookAt(-Vector3.right);
+            move -= Vector3.right;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            navMeshAgent.nextPosition -= Vector3.forward * Time.deltaTime;
-            transform.LookAt(-Vector3.forward);
+            move -= Vector3.forward;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            navMeshAgent.nextPosition += Vector3.right * Time.deltaTime;
-            transform.LookAt(Vector3.right);
+            move += Vector3.right;
         }
+
+        // 指定した座標を向いてくれる
+        transform.LookAt(pos + move);
+        // プレイヤーの移動先を指定
+        navMeshAgent.nextPosition += _velocity * move.normalized * Time.deltaTime;
+
     }
 }
