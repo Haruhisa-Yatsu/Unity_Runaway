@@ -13,9 +13,19 @@ public class Player : MonoBehaviour
     public NavMeshAgent navMeshAgent;
 
     /// <summary>
-    /// 移動の速さ
+    /// アニメーターコンポーネント
+    /// </summary>
+    public Animator animator;
+
+    /// <summary>
+    /// 歩きの速さ
     /// </summary>
     public float _velocity = 3.0f;
+
+    /// <summary>
+    /// 走りの速さ
+    /// </summary>
+    public float _sprintVelocity = 6.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +47,13 @@ public class Player : MonoBehaviour
         // vector3(0,0,0);
         Vector3 move = Vector3.zero;
 
+        float velocity = _velocity;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            velocity = _sprintVelocity;
+        }
+
+
         if (Input.GetKey(KeyCode.W))
         {
             move += Vector3.forward;
@@ -56,8 +73,12 @@ public class Player : MonoBehaviour
 
         // 指定した座標を向いてくれる
         transform.LookAt(pos + move);
-        // プレイヤーの移動先を指定
-        navMeshAgent.nextPosition += _velocity * move.normalized * Time.deltaTime;
 
+        // プレイヤーの移動先を指定
+        navMeshAgent.nextPosition += velocity * move.normalized * Time.deltaTime;
+
+        // アニメーターコントローラーに追加したパラメータへ
+        // 第二引数で指定した値を入れる
+        animator.SetFloat("velocity", move.normalized.magnitude * velocity);
     }
 }
