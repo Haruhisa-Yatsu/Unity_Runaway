@@ -5,6 +5,9 @@ using UnityEngine;
 // NavMeshAgentを呼び出すのに必要なImport
 using UnityEngine.AI;
 
+//SceneManagerクラスを呼び出すのに必要
+using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour
 {
     /// <summary>
@@ -81,4 +84,13 @@ public class Player : MonoBehaviour
         // 第二引数で指定した値を入れる
         animator.SetFloat("velocity", move.normalized.magnitude * velocity);
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+
 }
