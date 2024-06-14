@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &534020703
+--- !u!1 &312065940
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 534020705}
-  - component: {fileID: 534020704}
+  - component: {fileID: 312065942}
+  - component: {fileID: 312065941}
   m_Layer: 0
   m_Name: SceneChanger
   m_TagString: Untagged
@@ -140,26 +140,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &534020704
+--- !u!114 &312065941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534020703}
+  m_GameObject: {fileID: 312065940}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5c79fc2534fb8a4f8b8db4eea037707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextScene: Title
---- !u!4 &534020705
+  _nextScene: Game
+--- !u!4 &312065942
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534020703}
+  m_GameObject: {fileID: 312065940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -238,7 +238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B2\u30FC\u30E0\u30AF\u30EA\u30A2"
+  m_Text: RunAway
 --- !u!222 &777888789
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -611,4 +611,4 @@ SceneRoots:
   - {fileID: 1493951754}
   - {fileID: 1776264467}
   - {fileID: 1295849615}
-  - {fileID: 534020705}
+  - {fileID: 312065942}
